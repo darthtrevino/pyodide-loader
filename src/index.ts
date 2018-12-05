@@ -1,5 +1,4 @@
 import { embedPyodideScripts } from './util/embedPyodideScripts'
-import { usePromise } from './util/usePromise'
 import { createInitialModule } from './util/createInitialModule'
 import { Pyodide } from './types'
 
@@ -15,15 +14,12 @@ declare global {
  * @param {string} baseURL the base URL for pyodide scripts
  */
 export async function languagePluginLoader(baseURL: string): Promise<Pyodide> {
-	const [postRunPromise, resolvePostRun] = usePromise()
-	const [dataLoadPromise, resolveDataLoad] = usePromise()
-	const Module = createInitialModule(baseURL, resolvePostRun, resolveDataLoad)
+	// kicks off the wasm download and creates the initial interop module
+	const [Module, moduleLoadComplete] = createInitialModule(baseURL)
 
-		// Pack the module into the window
-	;(window as any).Module = Module
-
-	// Load Pyodide
+	// loads the dependency chain
 	embedPyodideScripts(baseURL, Module)
-	await Promise.all([postRunPromise, dataLoadPromise])
+
+	await moduleLoadComplete
 	return window.pyodide
 }

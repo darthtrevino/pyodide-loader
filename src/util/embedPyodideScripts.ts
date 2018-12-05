@@ -16,6 +16,9 @@ export function embedPyodideScripts(
 	baseURL: string,
 	Module: Partial<PyodideModule>,
 ) {
+	// Pack the module into the window
+	;(window as any).Module = Module
+
 	let loadPackagePromise = Promise.resolve()
 
 	const preloadWasm = () => {
