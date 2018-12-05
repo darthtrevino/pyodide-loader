@@ -11,6 +11,7 @@ export function usePromise<T>(): [
 
 	/**
 	 * this works, because according to the promise spec, the promise callback is invoked immediately
+	 * see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Syntax
 	 */
 	const promise = new Promise<T>((resolve, reject) => {
 		resolver = resolve
