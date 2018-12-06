@@ -34,3 +34,9 @@ export interface PyodideModule {
 	monitorRunDependencies(n: number): void
 	loadWebAssemblyModule(file: any, flag: boolean): Promise<any>
 }
+
+declare global {
+	interface Window {
+		pyodide: Pyodide
+	}
+}

@@ -2,12 +2,6 @@ import { embedPyodideScripts } from './util/embedPyodideScripts'
 import { createInitialModule } from './util/createInitialModule'
 import { Pyodide } from './types'
 
-declare global {
-	interface Window {
-		pyodide: Pyodide
-	}
-}
-
 /**
  * The main bootstrap script for loading pyodide.
  *
