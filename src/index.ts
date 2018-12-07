@@ -7,7 +7,9 @@ import { Pyodide } from './types'
  *
  * @param {string} baseURL the base URL for pyodide scripts
  */
-export async function languagePluginLoader(baseURL: string): Promise<Pyodide> {
+export default async function languagePluginLoader(
+	baseURL: string,
+): Promise<Pyodide> {
 	// kicks off the wasm download and creates the initial interop module
 	const [Module, moduleLoadComplete] = createInitialModule(baseURL)
 

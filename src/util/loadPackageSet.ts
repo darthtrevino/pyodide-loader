@@ -20,8 +20,10 @@ export function loadPackageSet(
 		messageCallback(`Loading ${packageList}`)
 	}
 
-	pyodide._module.monitorRunDependencies = n => {
-		if (n === 0) {
+	let packageCounter = Object.keys(toLoad).length
+	pyodide._module.monitorRunDependencies = () => {
+		packageCounter--
+		if (packageCounter === 0) {
 			markPackagesAsLoaded(pyodide, toLoad)
 			delete pyodide._module.monitorRunDependencies
 			if (!isFirefox) {
