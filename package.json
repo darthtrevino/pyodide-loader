@@ -12,10 +12,7 @@
 	},
 	"author": "",
 	"license": "MIT",
-	"dependencies": {
-		"rollup-plugin-node-resolve": "^3.4.0",
-		"rollup-plugin-typescript2": "^0.18.0"
-	},
+	"dependencies": {},
 	"devDependencies": {
 		"husky": "^1.2.0",
 		"lint-staged": "^8.1.0",
@@ -24,7 +21,9 @@
 		"rollup": "^0.67.4",
 		"tslint": "^5.11.0",
 		"tslint-config-prettier": "^1.17.0",
-		"typescript": "^3.2.1"
+		"typescript": "^3.2.1",
+		"rollup-plugin-node-resolve": "^3.4.0",
+		"rollup-plugin-typescript2": "^0.18.0"
 	},
 	"husky": {
 		"hooks": {
