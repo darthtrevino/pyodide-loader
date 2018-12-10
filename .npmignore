@@ -1,0 +1,6 @@
+node_modules/
+.vscode/
+rollup.config.js
+tsconfig.json
+tslint.json
+.gitignore
