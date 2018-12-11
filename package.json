@@ -5,8 +5,10 @@
 	"main": "lib/index.js",
 	"typings": "lib/index.d.ts",
 	"scripts": {
-		"clean": "rimraf lib dist",
-		"build": "tsc",
+		"clean": "rimraf lib dist cjs",
+		"build:modules": "tsc",
+		"build:cjs": "tsc --outDir cjs --module commonjs",
+		"build": "run-s build:*",
 		"lint": "tslint src/**/*.ts",
 		"rollup_browser_script": "rollup -c rollup.config.js",
 		"test": "run-s lint build rollup_browser_script"
