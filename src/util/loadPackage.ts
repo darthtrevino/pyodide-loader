@@ -5,11 +5,15 @@ import { loadPackageSet } from './loadPackageSet'
 export function loadPackage(
 	baseURL: string,
 	pymod: PyodideModule,
-	names: string[],
+	names: string | string[],
 	messageCallback: MessageCallback,
 ): Promise<any> {
+	if (!names == null) {
+		throw new Error('package names must be defined')
+	}
 	const pyodide = window.pyodide as Pyodide
-	const toLoad = getPackageDependencies(names, pyodide)
+	const packages = Array.isArray(names) ? names : [names]
+	const toLoad = getPackageDependencies(packages, pyodide)
 	const promise = loadPackageSet(
 		toLoad,
 		messageCallback,
