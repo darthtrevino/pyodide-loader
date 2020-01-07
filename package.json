@@ -5,6 +5,7 @@
 	"main": "lib/index.js",
 	"typings": "lib/index.d.ts",
 	"scripts": {
+		"prepare": "npm run build",
 		"clean": "rimraf lib dist cjs",
 		"build:modules": "tsc",
 		"build:cjs": "tsc --outDir cjs --module commonjs",
